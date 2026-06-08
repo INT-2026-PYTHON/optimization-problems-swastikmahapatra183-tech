@@ -79,3 +79,40 @@ overall O(n) algorithm.
 =================================================
 
 """
+def has_pair_brute(nums, k):
+    """
+    Brute-force approach
+    Time Complexity: O(n^2)
+    Space Complexity: O(1)
+    """
+    n = len(nums)
+
+    for i in range(n):
+        for j in range(i + 1, n):
+            if abs(nums[i] - nums[j]) == k:
+                return True
+
+    return False
+
+
+def has_pair_fast(nums, k):
+    """
+    Optimized approach using a set
+    Time Complexity: O(n)
+    Space Complexity: O(n)
+    """
+    num_set = set(nums)
+
+    for x in nums:
+        if (x + k) in num_set or (x - k) in num_set:
+            return True
+
+    return False
+
+
+# Example Input 1
+nums = [1, 5, 3, 4, 2]
+k = 3
+
+print("Brute Force:", has_pair_brute(nums, k))
+print("Optimized:  ", has_pair_fast(nums, k))
