@@ -63,3 +63,41 @@ Optimized:   False  # O(n)
 =================================================
 
 """
+def has_duplicate_brute(nums):
+    """
+    Brute-force approach
+    Time Complexity: O(n^2)
+    Space Complexity: O(1)
+    """
+    n = len(nums)
+
+    for i in range(n):
+        for j in range(i + 1, n):
+            if nums[i] == nums[j]:
+                return True
+
+    return False
+
+
+def has_duplicate_fast(nums):
+    """
+    Optimized approach using a set
+    Time Complexity: O(n)
+    Space Complexity: O(n)
+    """
+    seen = set()
+
+    for num in nums:
+        if num in seen:
+            return True
+        seen.add(num)
+
+    return False
+
+
+input-1
+
+nums = [1, 2, 3, 1]
+
+print("Brute Force:", has_duplicate_brute(nums))
+print("Optimized:  ", has_duplicate_fast(nums))
